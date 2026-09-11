@@ -1,6 +1,8 @@
 describe("Prevenir tareas vacías",() => {
     beforeEach(() => {
-        cy.visit("https://todomvc.com/examples/react/dist/#/active")
+        cy.env(['uiBaseUrl']).then(({uiBaseUrl}) => {
+            cy.visit(uiBaseUrl)
+        })
     })
 
     it('CP-04 - No permitir agregar tareas vacías', () => {

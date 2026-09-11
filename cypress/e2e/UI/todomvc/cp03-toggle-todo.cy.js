@@ -1,6 +1,8 @@
 describe("Marcar como completado",  () => {
      beforeEach(() => {
-        cy.visit("https://todomvc.com/examples/react/dist/#/active")
+        cy.env(['uiBaseUrl']).then(({uiBaseUrl}) => {
+            cy.visit(uiBaseUrl)
+        })
     })
 
     it('CP-03 - Marcar una tarea como completada', () => {
@@ -11,7 +13,7 @@ describe("Marcar como completado",  () => {
         cy.get(".toggle")
         .check()
         
-        cy.contains("All").click()
+        cy.contains('a', "All").click()
 
         cy.contains(".todo-list li", task)
         .should("have.class", "completed")

@@ -2,7 +2,9 @@ describe('todoMVC Edit todo', () => {
     let tasks
 
     beforeEach(() => {
-        cy.visit("https://todomvc.com/examples/react/dist/#/active")   
+        cy.env(['uiBaseUrl']).then(({uiBaseUrl}) => {
+            cy.visit(uiBaseUrl)
+        })
 
         cy.fixture("todos").then((data) => {
             tasks = data.tasks
@@ -19,7 +21,7 @@ describe('todoMVC Edit todo', () => {
         .dblclick()
 
         // Clear the existing text and type the new text
-        cy.get("li .input-container .new-todo")
+        cy.get("li.editing .edit")
         .clear()
         .type("Comprar zanahorias{enter}")
 
@@ -33,10 +35,9 @@ describe('todoMVC Edit todo', () => {
         .dblclick()
 
         // Clear the existing text, type the new text and cancel the edit
-        cy.get("li .input-container .new-todo")
+        cy.get("li.editing .edit")
         .clear()
-        .type("Comprar zanahorias")
-        .blur()
+        .type("Comprar zanahorias{esc}")
 
         // Verify that the task has not been updated
         cy.contains(".todo-list li", tasks[2])
