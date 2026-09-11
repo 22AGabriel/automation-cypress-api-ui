@@ -2,7 +2,9 @@ describe(("Marcar tareas como no completadas"),  () => {
     let tasks 
 
     beforeEach(() => {
-        cy.visit("https://todomvc.com/examples/react/dist/#/active")
+        cy.env(['uiBaseUrl']).then(({uiBaseUrl}) => {
+            cy.visit(uiBaseUrl)
+        })
 
         cy.fixture("todos").then((data) => {
             tasks = data.tasks

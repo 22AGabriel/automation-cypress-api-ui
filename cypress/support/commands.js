@@ -29,7 +29,7 @@ import { ENDPOINTS } from "./constants"
 
 // Custom command to add a new todo via the UI
 Cypress.Commands.add('addTodo', (task) => {
-    cy.get("#todo-input.new-todo")
+    cy.get(".new-todo")
     .type(task)
     .type("{enter}")
 })

@@ -2,7 +2,9 @@ describe("Delete todo", () => {
     let tasks
 
     beforeEach(() => {
-        cy.visit("https://todomvc.com/examples/react/dist/#/active")
+        cy.env(['uiBaseUrl']).then(({uiBaseUrl}) => {
+            cy.visit(uiBaseUrl)
+        })
         
         // Create a task
         cy.fixture("todos").then((data) => {

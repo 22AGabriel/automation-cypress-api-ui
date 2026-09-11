@@ -1,4 +1,4 @@
-![Cypress Tests](https://github.com/22AGabriel/cypress-automation-practice/actions/workflows/cypress.yml/badge.svg)
+![Cypress Tests](https://github.com/22AGabriel/automation-cypress-api-ui/actions/workflows/cypress.yml/badge.svg)
 
 # Cypress Testing Project (API + UI)
 This project contains automated tests built with Cypress, covering both API and UI testing scenarios.
@@ -112,6 +112,16 @@ Run tests for CI (API + UI together):
 
 ---
 
+### 🌍 Environment Configuration
+
+Tests can run against different environments by passing the `environment` variable:
+
+`npx cypress run --env environment=production`
+
+If no environment is specified, `production` is used by default.
+
+---
+
 ### 📊 Test Reports
 
 This project uses Mochawesome for generating test reports. 
@@ -154,7 +164,6 @@ Tests were designed following QA best practices:
 
 ### 📈 Future Improvements
 
-- Environment configuration
 - Cross-browser testing
 - Integration with performance testing tools (e.g. Apache JMeter)
  
